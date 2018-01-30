@@ -21,5 +21,8 @@ function love.load()
             vsync = true,
             resizable = false
         })
+
+    -- Set a grey background colour
+    love.graphics.setBackgroundColor(25, 25, 25)
 end
 
