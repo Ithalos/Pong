@@ -48,3 +48,25 @@ function love.load()
     gameState = "main"
 end
 
+--[[
+    Draw on the screen every frame.
+]]
+function love.draw()
+    if gameState == "main" then
+        drawMain()
+    end
+end
+
+--[[
+    Draw the welcome screen. This function should be called in love.draw().
+]]
+function drawMain()
+        love.graphics.setFont(largeFont)
+        love.graphics.printf("Welcome to Pong!", 0, WINDOW_HEIGHT / 4 * 1,
+                             WINDOW_WIDTH, "center")
+
+        love.graphics.setFont(smallFont)
+        love.graphics.printf("Press enter to start...", 0, WINDOW_HEIGHT / 4 * 3,
+                             WINDOW_WIDTH, "center")
+end
+
