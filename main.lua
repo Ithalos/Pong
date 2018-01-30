@@ -29,5 +29,8 @@ function love.load()
     smallFont = love.graphics.newFont(15)
     largeFont = love.graphics.newFont(30)
     scoreFont = love.graphics.newFont(50)
+
+    -- Set the colour for drawing to white
+    love.graphics.setColor(255, 255, 255, 255)
 end
 
