@@ -35,5 +35,16 @@ function love.load()
 
     -- Set the colour for drawing to white
     love.graphics.setColor(255, 255, 255, 255)
+
+    --[[
+        The gameState variable will hold the current state of the game,
+        which is one of the following:
+
+        main    -- The welcome screen
+        ready   -- The ball is ready to be launched
+        play    -- The ball is moving and the game is in progress
+        done    -- A player has won, and the game can now be restarted
+    ]]
+    gameState = "main"
 end
 
