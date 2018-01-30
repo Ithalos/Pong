@@ -22,6 +22,9 @@ function love.load()
             resizable = false
         })
 
+    -- Set the window title
+    love.window.setTitle("Pong")
+
     -- Set a grey background colour
     love.graphics.setBackgroundColor(25, 25, 25)
 
