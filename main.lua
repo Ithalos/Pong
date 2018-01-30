@@ -12,7 +12,7 @@ WINDOW_HEIGHT = 480
     Initial program setup.
 ]]
 function love.load()
-    -- Set the display mode and properties of the game window.
+    -- Set the display mode and properties of the game window
     love.window.setMode(
         WINDOW_WIDTH,
         WINDOW_HEIGHT,
@@ -24,5 +24,10 @@ function love.load()
 
     -- Set a grey background colour
     love.graphics.setBackgroundColor(25, 25, 25)
+
+    -- Set up some differently sized fonts
+    smallFont = love.graphics.newFont(15)
+    largeFont = love.graphics.newFont(30)
+    scoreFont = love.graphics.newFont(50)
 end
 
