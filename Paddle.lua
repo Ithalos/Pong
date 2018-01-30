@@ -36,3 +36,11 @@ function Paddle:Create(posX, posY, keyUp, keyDown)
     return newObject
 end
 
+--[[
+    Draw the paddle that calls this method to the screen.
+    This method should be called in love.draw().
+]]
+function Paddle:Render()
+    love.graphics.rectangle("fill", self.posX, self.posY, self.sizeX, self.sizeY)
+end
+
