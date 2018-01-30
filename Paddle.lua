@@ -20,3 +20,19 @@ Paddle =
     keyDown
 }
 
+--[[
+    Instantiate a new paddle object, assign it a position, and
+    set which keys will move the paddle up and down.
+    Its size and speed are inherited automatically.
+]]
+function Paddle:Create(posX, posY, keyUp, keyDown)
+    newObject = {}
+    setmetatable(newObject, self)
+    self.__index = self
+    newObject.posX = posX
+    newObject.posY = posY
+    newObject.keyUp = keyUp
+    newObject.keyDown = keyDown
+    return newObject
+end
+
