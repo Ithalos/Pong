@@ -14,6 +14,8 @@ Ball =
     sizeX = 8,
     sizeY = 8,
 
+    speed = 300,
+
     dirX,
     dirY
 }
