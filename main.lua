@@ -52,8 +52,8 @@ function love.load()
     -- Set the original paddle starting positions
     leftStartPos =
     {
-            x = Paddle.sizeX,
-            y = Paddle.sizeY
+        x = Paddle.sizeX,
+        y = Paddle.sizeY
     }
     rightStartPos =
     {
