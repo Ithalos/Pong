@@ -40,3 +40,11 @@ function Ball:Render()
     love.graphics.rectangle("fill", self.posX, self.posY, self.sizeX, self.sizeY)
 end
 
+--[[
+    Reset the ball to the middle of the screen.
+]]
+function Ball:ResetPos(startPos)
+    self.posX = startPos.x
+    self.posY = startPos.y
+end
+
