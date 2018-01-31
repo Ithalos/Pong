@@ -44,3 +44,25 @@ function Paddle:Render()
     love.graphics.rectangle("fill", self.posX, self.posY, self.sizeX, self.sizeY)
 end
 
+--[[
+    Move the paddle by its speed when there is player input, multiplied by
+    delta time, to ensure movement remains framerate independent.
+    Stop the paddle from moving past the edges of the screen.
+    This function should be called in love.update(dt).
+]]
+function Paddle:Move(dt)
+    if love.keyboard.isDown(self.keyUp) then
+        self.posY = self.posY - self.speed * dt
+        -- Top edge collision check
+        if self.posY < 0 then
+            self.posY = 0
+        end
+    elseif love.keyboard.isDown(self.keyDown) then
+        self.posY = self.posY + self.speed * dt
+        -- Bottom edge collision check
+        if self.posY > WINDOW_HEIGHT - self.sizeY then
+            self.posY = WINDOW_HEIGHT - self.sizeY
+        end
+    end
+end
+
