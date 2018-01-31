@@ -5,6 +5,8 @@
     The main program.
 ]]
 
+require "Paddle"
+
 WINDOW_WIDTH = 720
 WINDOW_HEIGHT = 480
 
@@ -46,6 +48,22 @@ function love.load()
         done    -- A player has won, and the game can now be restarted
     ]]
     gameState = "main"
+
+    -- Set the original paddle starting positions
+    leftStartPos =
+    {
+            x = Paddle.sizeX,
+            y = Paddle.sizeY
+    }
+    rightStartPos =
+    {
+        x = WINDOW_WIDTH - Paddle.sizeX * 2,
+        y = WINDOW_HEIGHT - Paddle.sizeY * 2
+    }
+
+    -- Create the paddles that will represent the players
+    leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s")
+    rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down")
 end
 
 --[[
