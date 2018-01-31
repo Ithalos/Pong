@@ -67,6 +67,13 @@ function love.load()
     leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s")
     rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down")
 
+    -- Keep track of the players' scores
+    leftPlayerScore = 0
+    rightPlayerScore = 0
+
+    -- Keep track of which player scored last, if any
+    lastScoringPlayer = ""
+
     -- Set the original ball starting position to the middle of the screen
     ballStartPos =
     {
