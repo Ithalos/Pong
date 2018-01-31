@@ -97,6 +97,9 @@ function love.draw()
     leftPlayer:Render()
     rightPlayer:Render()
     ball:Render()
+
+    -- Draw the players' scores on the screen
+    drawScores()
 end
 
 --[[
