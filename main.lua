@@ -5,7 +5,9 @@
     The main program.
 ]]
 
+-- Dependencies
 require "Paddle"
+require "Ball"
 
 WINDOW_WIDTH = 720
 WINDOW_HEIGHT = 480
@@ -64,6 +66,16 @@ function love.load()
     -- Create the paddles that will represent the players
     leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s")
     rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down")
+
+    -- Set the original ball starting position to the middle of the screen
+    ballStartPos =
+    {
+        x = (WINDOW_WIDTH / 2) - (Ball.sizeX / 2),
+        y = (WINDOW_HEIGHT / 2) - (Ball.sizeY / 2)
+    }
+
+    -- Create the ball that the players must deflect
+    ball = Ball:Create(ballStartPos.x, ballStartPos.y)
 end
 
 --[[
