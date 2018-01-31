@@ -41,6 +41,28 @@ function Ball:Render()
 end
 
 --[[
+    Set the ball's new direction. If a player scored, the direction will
+    be set towards the side of the opponent, otherise it will be random.
+]]
+function Ball:SetDirection(lastScoringPlayer)
+    -- Set the horizontal direction
+    if lastScoringPlayer == "left" then
+        self.dirX = self.launchSpeed
+    elseif lastScoringPlayer == "right" then
+        self.dirX = -self.launchSpeed
+    else
+        -- Random direction
+        if love.math.random(0, 1) == 1 then
+            self.dirX = -self.launchSpeed
+        else
+            self.dirX = self.launchSpeed
+        end
+    end
+    -- Set the vertical direction
+    self.dirY = love.math.random(-self.launchSpeed, self.launchSpeed) / 2
+end
+
+--[[
     Reset the ball to the middle of the screen.
 ]]
 function Ball:ResetPos(startPos)
