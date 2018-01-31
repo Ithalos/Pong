@@ -32,3 +32,11 @@ function Ball:Create(posX, posY, sizeX, sizeY)
     return newObject
 end
 
+--[[
+    Draw the ball that calls this method to the screen.
+    This method should be called in love.draw().
+]]
+function Ball:Render()
+    love.graphics.rectangle("fill", self.posX, self.posY, self.sizeX, self.sizeY)
+end
+
