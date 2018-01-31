@@ -93,6 +93,15 @@ function love.draw()
 end
 
 --[[
+    This function gets called every frame.
+]]
+function love.update(dt)
+    -- Move the paddles when there is player input
+    leftPlayer:Move(dt)
+    rightPlayer:Move(dt)
+end
+
+--[[
     Draw the welcome screen. This function should be called in love.draw().
 ]]
 function drawMain()
