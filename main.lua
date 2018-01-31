@@ -85,6 +85,11 @@ function love.draw()
     if gameState == "main" then
         drawMain()
     end
+
+    -- Render the paddles and ball on the screen every frame
+    leftPlayer:Render()
+    rightPlayer:Render()
+    ball:Render()
 end
 
 --[[
