@@ -134,6 +134,10 @@ function love.update(dt)
     -- Move the paddles when there is player input
     leftPlayer:Move(dt)
     rightPlayer:Move(dt)
+
+    if gameState == "play" then
+        ball:Move(dt)
+    end
 end
 
 --[[
