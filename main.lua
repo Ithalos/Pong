@@ -9,6 +9,7 @@
 require "Paddle"
 require "Ball"
 
+-- Game window dimensions
 WINDOW_WIDTH = 720
 WINDOW_HEIGHT = 480
 
@@ -105,6 +106,17 @@ function love.draw()
 
     -- Draw the players' scores on the screen
     drawScores()
+end
+
+--[[
+    Polls for keyboard input.
+]]
+function love.keypressed(key)
+    if gameState == "main" then
+        if key == "return" then
+            gameState = "ready"
+        end
+    end
 end
 
 --[[
