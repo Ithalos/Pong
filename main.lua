@@ -117,6 +117,14 @@ function love.keypressed(key)
             gameState = "ready"
         end
     end
+
+    if gameState == "ready" then
+        if key == "space" then
+            -- Serve towards the player who scored last
+            ball:SetDirection(lastScoringPlayer)
+            gameState = "play"
+        end
+    end
 end
 
 --[[
