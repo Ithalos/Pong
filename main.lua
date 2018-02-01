@@ -97,6 +97,8 @@ function love.draw()
         drawMain()
     elseif gameState == "ready" then
         drawReady()
+    elseif gameState == "done" then
+        drawDone(lastScoringPlayer)
     end
 
     -- Render the paddles and ball on the screen every frame
@@ -171,6 +173,29 @@ function drawReady()
 
     love.graphics.setFont(smallFont)
     love.graphics.printf("Press space to launch...", 0, WINDOW_HEIGHT / 4 * 3,
+                         WINDOW_WIDTH, "center")
+end
+
+--[[
+    Draw the game over screen, showing who won and who lost.
+]]
+function drawDone(winner)
+    if winner == "left" then
+        leftText = "You win!"
+        rightText = "You lose!"
+    else
+        leftText = "You lose!"
+        rightText = "You win!"
+    end
+
+    love.graphics.setFont(largeFont)
+    love.graphics.printf(leftText, 0, WINDOW_HEIGHT / 2,
+                         WINDOW_WIDTH / 8 * 3, "right")
+    love.graphics.printf(rightText, WINDOW_WIDTH / 8 * 5, WINDOW_HEIGHT / 2,
+                         WINDOW_WIDTH, "left")
+
+    love.graphics.setFont(smallFont)
+    love.graphics.printf("Press enter to restart...", 0, WINDOW_HEIGHT / 5 * 4,
                          WINDOW_WIDTH, "center")
 end
 
