@@ -47,9 +47,9 @@ end
 function Ball:SetDirection(lastScoringPlayer)
     -- Set the horizontal direction
     if lastScoringPlayer == "left" then
-        self.dirX = self.launchSpeed
-    elseif lastScoringPlayer == "right" then
         self.dirX = -self.launchSpeed
+    elseif lastScoringPlayer == "right" then
+        self.dirX = self.launchSpeed
     else
         -- Random direction
         if love.math.random(0, 1) == 1 then
