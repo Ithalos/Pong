@@ -127,6 +127,13 @@ function love.keypressed(key)
             gameState = "play"
         end
     end
+
+    if gameState == "done" then
+        if key == "return" then
+            newGameSetup()
+            gameState = "main"
+        end
+    end
 end
 
 --[[
@@ -229,5 +236,16 @@ function playerScored(player)
         ball:ResetPos(ballStartPos)
         gameState = "ready"
     end
+end
+
+--[[
+    Reset the game state to allow a new game to begin.
+]]
+function newGameSetup()
+    ball:ResetPos(ballStartPos)
+    lastScoringPlayer = ""
+    ball:SetDirection()
+    leftPlayerScore = 0
+    rightPlayerScore = 0
 end
 
