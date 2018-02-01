@@ -91,6 +91,8 @@ end
 function love.draw()
     if gameState == "main" then
         drawMain()
+    elseif gameState == "ready" then
+        drawReady()
     end
 
     -- Render the paddles and ball on the screen every frame
@@ -121,6 +123,19 @@ function drawMain()
 
     love.graphics.setFont(smallFont)
     love.graphics.printf("Press enter to start...", 0, WINDOW_HEIGHT / 4 * 3,
+                         WINDOW_WIDTH, "center")
+end
+
+--[[
+    Draw the ready screen. This function should be called in love.draw().
+]]
+function drawReady()
+    love.graphics.setFont(largeFont)
+    love.graphics.printf("Ready to serve!", 0, WINDOW_HEIGHT / 4 * 1,
+                         WINDOW_WIDTH, "center")
+
+    love.graphics.setFont(smallFont)
+    love.graphics.printf("Press space to launch...", 0, WINDOW_HEIGHT / 4 * 3,
                          WINDOW_WIDTH, "center")
 end
 
