@@ -41,8 +41,8 @@ function Ball:Render()
 end
 
 --[[
-    Set the ball's new direction. If a player scored, the direction will
-    be set towards the side of the opponent, otherise it will be random.
+    Set the ball's new direction. If a player scored, the ball's launch
+    direction will be towards him on the next serve, otherwise it will be random.
 ]]
 function Ball:SetDirection(lastScoringPlayer)
     -- Set the horizontal direction
