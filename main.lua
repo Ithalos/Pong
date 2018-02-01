@@ -83,6 +83,9 @@ function love.load()
 
     -- Create the ball that the players must deflect
     ball = Ball:Create(ballStartPos.x, ballStartPos.y)
+
+    -- Give the ball a random starting direction
+    ball:SetDirection()
 end
 
 --[[
