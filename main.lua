@@ -137,6 +137,14 @@ function love.update(dt)
 
     if gameState == "play" then
         ball:Move(dt)
+
+        -- Check left edge collision
+        if ball.posX < 0 then
+            playerScored("right")
+        -- Check right edge collision
+        elseif ball.posX > WINDOW_WIDTH - ball.sizeX then
+            playerScored("left")
+        end
     end
 end
 
@@ -176,5 +184,25 @@ function drawScores()
                          WINDOW_HEIGHT / 10, WINDOW_WIDTH / 2, "center")
     love.graphics.printf(rightPlayerScore, WINDOW_WIDTH / 2,
                          WINDOW_HEIGHT / 10, WINDOW_WIDTH / 6, "center")
+end
+
+--[[
+    This function is called any time a player scores.
+]]
+function playerScored(player)
+    lastScoringPlayer = player
+
+    if player == "left" then
+        leftPlayerScore = leftPlayerScore + 1
+    elseif player == "right" then
+        rightPlayerScore = rightPlayerScore + 1
+    end
+
+    if leftPlayerScore > 10 or rightPlayerScore > 10 then
+        gameState = "done"
+    else
+        ball:ResetPos(ballStartPos)
+        gameState = "ready"
+    end
 end
 
