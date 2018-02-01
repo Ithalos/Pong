@@ -70,3 +70,25 @@ function Ball:ResetPos(startPos)
     self.posY = startPos.y
 end
 
+--[[
+    Move the ball's position by its direction, multiplied by delta time.
+    This ensures its movement remains framerate independent. The speed of
+    the ball can vary depending on its angle. It will move faster diagonally,
+    as its movement is not normalized. This is intentional, to add some variation.
+    Check for top and bottom collision as well. If the ball collides with the
+    top or bottom edge, it will bounce with a small amount of random variation.
+]]
+function Ball:Move(dt)
+    self.posX = self.posX + self.dirX * dt
+    self.posY = self.posY + self.dirY * dt
+    -- Top edge collision check
+    if self.posY < 0 then
+        self.posY = 0
+        self.dirY = -self.dirY + love.math.random(-100, 100)
+    -- Bottom edge collision check
+    elseif self.posY > WINDOW_HEIGHT - self.sizeY then
+        self.posY = WINDOW_HEIGHT - self.sizeY
+        self.dirY = -self.dirY + love.math.random(-100, 100)
+    end
+end
+
