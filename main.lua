@@ -124,3 +124,15 @@ function drawMain()
                          WINDOW_WIDTH, "center")
 end
 
+--[[
+    Draw the players' scores to the screen.
+    This function should be called in love.draw()
+]]
+function drawScores()
+    love.graphics.setFont(scoreFont)
+    love.graphics.printf(leftPlayerScore, WINDOW_WIDTH / 6,
+                         WINDOW_HEIGHT / 10, WINDOW_WIDTH / 2, "center")
+    love.graphics.printf(rightPlayerScore, WINDOW_WIDTH / 2,
+                         WINDOW_HEIGHT / 10, WINDOW_WIDTH / 6, "center")
+end
+
