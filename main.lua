@@ -87,6 +87,15 @@ function love.load()
 
     -- Give the ball a random starting direction
     ball:SetDirection()
+
+    -- Set master volume and load sounds into memory
+    love.audio.setVolume(0.20)
+    sounds =
+    {
+        paddleHit = love.audio.newSource("sounds/PaddleHit.wav", "static"),
+        score = love.audio.newSource("sounds/Score.wav", "static"),
+        gameOver = love.audio.newSource("sounds/GameOver.wav", "static")
+    }
 end
 
 --[[
@@ -160,10 +169,12 @@ function love.update(dt)
             ball.dirX = -ball.dirX
             ball.posX = leftPlayer.posX + leftPlayer.sizeX
             calculateBallAngle(leftPlayer)
+            love.audio.play(sounds["paddleHit"])
         elseif ball:Collide(rightPlayer) then
             ball.dirX = -ball.dirX
             ball.posX = rightPlayer.posX - ball.sizeX
             calculateBallAngle(rightPlayer)
+            love.audio.play(sounds["paddleHit"])
         end
     end
 end
@@ -233,6 +244,7 @@ end
     This function is called any time a player scores.
 ]]
 function playerScored(player)
+    love.audio.play(sounds["score"])
     lastScoringPlayer = player
 
     if player == "left" then
@@ -243,6 +255,7 @@ function playerScored(player)
 
     if leftPlayerScore > 10 or rightPlayerScore > 10 then
         gameState = "done"
+        love.audio.play(sounds["gameOver"])
     else
         ball:ResetPos(ballStartPos)
         gameState = "ready"
