@@ -92,3 +92,19 @@ function Ball:Move(dt)
     end
 end
 
+--[[
+    Check whether or not the ball has collided with the paddle.
+]]
+function Ball:Collide(paddle)
+    if self.posX > paddle.posX + paddle.sizeX or
+       self.posX + self.sizeX < paddle.posX then
+        return false
+    end
+    if self.posY > paddle.posY + paddle.sizeY or
+       self.posY + self.sizeY < paddle.posY then
+        return false
+    end
+
+    return true
+end
+
