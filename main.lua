@@ -154,6 +154,17 @@ function love.update(dt)
         elseif ball.posX > WINDOW_WIDTH - ball.sizeX then
             playerScored("left")
         end
+
+        -- Check paddle collision with ball
+        if ball:Collide(leftPlayer) then
+            ball.dirX = -ball.dirX
+            ball.posX = leftPlayer.posX + leftPlayer.sizeX
+            calculateBallAngle(leftPlayer)
+        elseif ball:Collide(rightPlayer) then
+            ball.dirX = -ball.dirX
+            ball.posX = rightPlayer.posX - ball.sizeX
+            calculateBallAngle(rightPlayer)
+        end
     end
 end
 
