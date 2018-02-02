@@ -249,3 +249,16 @@ function newGameSetup()
     rightPlayerScore = 0
 end
 
+--[[
+    When the ball collides with a paddle, check whether it hits the top or bottom
+    half, then give it an additional, slightly randomised, push in that direction.
+    If it hits in the middle of the paddle, do nothing.
+]]
+function calculateBallAngle(paddle)
+    if ball.posY + ball.sizeY < paddle.posY + (paddle.sizeY / 2) then
+        ball.dirY = ball.dirY + love.math.random(-10, -150)
+    elseif ball.posY > paddle.posY + (paddle.sizeY / 2 )  then
+        ball.dirY = ball.dirY + love.math.random(10, 150)
+    end
+end
+
