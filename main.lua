@@ -286,8 +286,8 @@ end
 ]]
 function newGameSetup()
     ball:ResetPos(ballStartPos)
-    lastScoringPlayer = ""
     ball:SetDirection()
+    lastScoringPlayer = ""
     leftPlayerScore = 0
     rightPlayerScore = 0
 end
