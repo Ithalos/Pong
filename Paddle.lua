@@ -54,18 +54,30 @@ end
     This function should be called in love.update(dt).
 ]]
 function Paddle:Move(dt)
-    if love.keyboard.isDown(self.keyUp) then
-        self.posY = self.posY - self.speed * dt
-        -- Top edge collision check
-        if self.posY < 0 then
-            self.posY = 0
+    if self.isPlayer then
+        if love.keyboard.isDown(self.keyUp) then
+            self.posY = self.posY - self.speed * dt
+        elseif love.keyboard.isDown(self.keyDown) then
+            self.posY = self.posY + self.speed * dt
         end
-    elseif love.keyboard.isDown(self.keyDown) then
-        self.posY = self.posY + self.speed * dt
-        -- Bottom edge collision check
-        if self.posY > WINDOW_HEIGHT - self.sizeY then
-            self.posY = WINDOW_HEIGHT - self.sizeY
+    else
+        -- Move AI paddle
+        local offset = ball.posY - self.posY - self.sizeY / 2
+        -- Magic number madness :(
+        if offset > 2 then
+            offset = 2
+        elseif offset < -2 then
+            offset = -2
         end
+        self.posY = self.posY + offset + dt
+    end
+    -- Top edge collision check
+    if self.posY < 0 then
+        self.posY = 0
+    end
+    -- Bottom edge collision check
+    if self.posY > WINDOW_HEIGHT - self.sizeY then
+        self.posY = WINDOW_HEIGHT - self.sizeY
     end
 end
 
