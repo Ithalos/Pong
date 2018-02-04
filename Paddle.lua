@@ -17,7 +17,9 @@ Paddle =
     speed = 200,
 
     keyUp,
-    keyDown
+    keyDown,
+
+    isPlayer
 }
 
 --[[
@@ -25,7 +27,7 @@ Paddle =
     set which keys will move the paddle up and down.
     Its size and speed are inherited automatically.
 ]]
-function Paddle:Create(posX, posY, keyUp, keyDown)
+function Paddle:Create(posX, posY, keyUp, keyDown, isPlayer)
     newObject = {}
     setmetatable(newObject, self)
     self.__index = self
@@ -33,6 +35,7 @@ function Paddle:Create(posX, posY, keyUp, keyDown)
     newObject.posY = posY
     newObject.keyUp = keyUp
     newObject.keyDown = keyDown
+    newObject.isPlayer = isPlayer
     return newObject
 end
 
