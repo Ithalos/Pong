@@ -15,6 +15,7 @@ Paddle =
     sizeY = 50,
 
     speed = 200,
+    aiSpeed = 100,
 
     keyUp,
     keyDown,
@@ -69,7 +70,7 @@ function Paddle:Move(dt)
         elseif offset < -2 then
             offset = -2
         end
-        self.posY = self.posY + offset + dt
+        self.posY = self.posY + offset * self.aiSpeed * dt
     end
     -- Top edge collision check
     if self.posY < 0 then
