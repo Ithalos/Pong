@@ -52,6 +52,9 @@ function love.load()
     ]]
     gameState = "main"
 
+    -- Set the initial game mode
+    gameMode = "solo"
+
     -- Set the original paddle starting positions
     leftStartPos =
     {
@@ -65,8 +68,7 @@ function love.load()
     }
 
     -- Create the paddles that will represent the players
-    leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s")
-    rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down")
+    playerSetup(gameMode)
 
     -- Keep track of the players' scores
     leftPlayerScore = 0
@@ -126,6 +128,11 @@ function love.keypressed(key)
     if gameState == "main" then
         if key == "return" then
             gameState = "ready"
+            playerSetup(gameMode)
+        elseif key == "down" then
+            gameMode = "versus"
+        elseif key == "up" then
+            gameMode = "solo"
         end
     end
 
@@ -187,8 +194,20 @@ function drawMain()
     love.graphics.printf("Welcome to Pong!", 0, WINDOW_HEIGHT / 4 * 1,
                          WINDOW_WIDTH, "center")
 
+    if gameMode == "solo" then
+        love.graphics.setColor(255, 0, 0, 255)
+    end
+    love.graphics.printf("Solo", 0, WINDOW_HEIGHT / 10 * 6, WINDOW_WIDTH, "center")
+    love.graphics.setColor(255, 255, 255, 255)
+
+    if gameMode == "versus" then
+        love.graphics.setColor(255, 0, 0, 255)
+    end
+    love.graphics.printf("Versus", 0, WINDOW_HEIGHT / 10 * 7, WINDOW_WIDTH, "center")
+    love.graphics.setColor(255, 255, 255, 255)
+
     love.graphics.setFont(smallFont)
-    love.graphics.printf("Press enter to start...", 0, WINDOW_HEIGHT / 4 * 3,
+    love.graphics.printf("Press enter to start...", 0, WINDOW_HEIGHT / 10 * 9,
                          WINDOW_WIDTH, "center")
 end
 
@@ -283,6 +302,24 @@ function calculateBallAngle(paddle)
         ball.dirY = ball.dirY + love.math.random(-10, -150)
     elseif ball.posY > paddle.posY + (paddle.sizeY / 2 )  then
         ball.dirY = ball.dirY + love.math.random(10, 150)
+    end
+end
+
+--[[
+    Create both paddles, and set the right paddle up to be human controlled
+    if the gameMode is "versus", otherwise make it an AI controlled paddle.
+]]
+function playerSetup(gameMode)
+        leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s", true)
+    if gameMode == "solo" then
+        rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down", false)
+    else
+        --[[
+            Set the new right paddle's position to the position of the old paddle.
+            Make sure the gameMode is set to "solo" in love.load(),
+            otherwise this will throw an error.
+        ]]
+        rightPlayer = Paddle:Create(rightPlayer.posX, rightPlayer.posY, "up", "down", true)
     end
 end
 
