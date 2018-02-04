@@ -68,7 +68,8 @@ function love.load()
     }
 
     -- Create the paddles that will represent the players
-    playerSetup(gameMode)
+    leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s", true)
+    secondaryPlayerSetup(gameMode)
 
     -- Keep track of the players' scores
     leftPlayerScore = 0
@@ -128,7 +129,7 @@ function love.keypressed(key)
     if gameState == "main" then
         if key == "return" then
             gameState = "ready"
-            playerSetup(gameMode)
+            secondaryPlayerSetup(gameMode)
         elseif key == "down" then
             gameMode = "versus"
         elseif key == "up" then
@@ -306,19 +307,26 @@ function calculateBallAngle(paddle)
 end
 
 --[[
-    Create both paddles, and set the right paddle up to be human controlled
-    if the gameMode is "versus", otherwise make it an AI controlled paddle.
+    Set up the second paddle. Make it human controllable if the gameMode is set
+    to "versus", otherwise make it AI controlled.
 ]]
-function playerSetup(gameMode)
-        leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s", true)
+function secondaryPlayerSetup(gameMode)
+    --[[
+        If this is the first time the right paddle is created, set it up at the initial
+        starting location, otherwise set it to the old paddle's location.
+    ]]
     if gameMode == "solo" then
-        rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down", false)
+        if rightPlayer == nil then
+            rightPlayer = Paddle:Create(rightStartPos.x, rightStartPos.y, "up", "down", false)
+        else
+            rightPlayer = Paddle:Create(rightPlayer.posX, rightPlayer.posY, "up", "down", false)
+        end
+    --[[
+        Set the new right paddle's position to the position of the old paddle.
+        Make sure the gameMode is set to "solo" in love.load(),
+        otherwise this will throw an error.
+    ]]
     else
-        --[[
-            Set the new right paddle's position to the position of the old paddle.
-            Make sure the gameMode is set to "solo" in love.load(),
-            otherwise this will throw an error.
-        ]]
         rightPlayer = Paddle:Create(rightPlayer.posX, rightPlayer.posY, "up", "down", true)
     end
 end
