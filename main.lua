@@ -174,12 +174,12 @@ function love.update(dt)
 
         -- Check paddle collision with ball
         if ball:Collide(leftPlayer) then
-            ball.dirX = -ball.dirX
+            ball.dirX = -ball.dirX * 1.05
             ball.posX = leftPlayer.posX + leftPlayer.sizeX
             calculateBallAngle(leftPlayer)
             love.audio.play(sounds["paddleHit"])
         elseif ball:Collide(rightPlayer) then
-            ball.dirX = -ball.dirX
+            ball.dirX = -ball.dirX * 1.05
             ball.posX = rightPlayer.posX - ball.sizeX
             calculateBallAngle(rightPlayer)
             love.audio.play(sounds["paddleHit"])
