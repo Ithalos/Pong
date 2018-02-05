@@ -64,7 +64,7 @@ function Paddle:Move(dt)
     else
         -- Move AI paddle
         local offset = ball.posY - self.posY - self.sizeY / 2
-        -- Magic number madness :(
+        -- Clamp the offset, to smooth out AI movement
         if offset > 2 then
             offset = 2
         elseif offset < -2 then
