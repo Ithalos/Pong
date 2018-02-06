@@ -113,13 +113,13 @@ function love.draw()
         drawDone(lastScoringPlayer)
     end
 
+    -- Draw the players' scores on the screen
+    drawScores()
+
     -- Render the paddles and ball on the screen every frame
     leftPlayer:Render()
     rightPlayer:Render()
     ball:Render()
-
-    -- Draw the players' scores on the screen
-    drawScores()
 end
 
 --[[
