@@ -145,6 +145,7 @@ function love.keypressed(key)
         end
     end
 
+    -- Restart the game
     if gameState == "done" then
         if key == "return" then
             newGameSetup()
@@ -152,6 +153,7 @@ function love.keypressed(key)
         end
     end
 
+    -- Quit the game
     if key == "escape" then
         love.event.quit()
     end
