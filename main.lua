@@ -31,7 +31,7 @@ function love.load()
     love.window.setTitle("Pong")
 
     -- Set a grey background colour
-    love.graphics.setBackgroundColor(25, 25, 25)
+    love.graphics.setBackgroundColor(0.1, 0.1, 0.1)
 
     -- Set up some differently sized fonts
     smallFont = love.graphics.newFont(15)
@@ -39,7 +39,7 @@ function love.load()
     scoreFont = love.graphics.newFont(50)
 
     -- Set the colour for drawing to white
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
 
     --[[
         The gameState variable will hold the current state of the game,
@@ -202,16 +202,16 @@ function drawMain()
                          WINDOW_WIDTH, "center")
 
     if gameMode == "solo" then
-        love.graphics.setColor(255, 0, 0, 255)
+        love.graphics.setColor(1, 0, 0, 1)
     end
     love.graphics.printf("Solo", 0, WINDOW_HEIGHT / 10 * 6, WINDOW_WIDTH, "center")
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
 
     if gameMode == "versus" then
-        love.graphics.setColor(255, 0, 0, 255)
+        love.graphics.setColor(1, 0, 0, 1)
     end
     love.graphics.printf("Versus", 0, WINDOW_HEIGHT / 10 * 7, WINDOW_WIDTH, "center")
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
 
     love.graphics.setFont(smallFont)
     love.graphics.printf("Press enter to start...", 0, WINDOW_HEIGHT / 10 * 9,
