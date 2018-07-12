@@ -2,10 +2,13 @@
 The 1972 Atari classic, remade in Love2D using Lua.
 
 ## Requirements:
-### Love2D:
 #### Arch Linux
-&nbsp;&nbsp;&nbsp;&nbsp;```pacman -S love```
+```
+pacman -S love
+```
 #### Mint / Ubuntu
-&nbsp;&nbsp;&nbsp;&nbsp;```apt-get install love```
+```
+apt-get install love
+```
 #### Windows
-&nbsp;&nbsp;&nbsp;&nbsp;[Love2D](https://love2d.org/)
+[Love2D](https://love2d.org/)
