@@ -1,8 +1,6 @@
 # Pong
-
 The 1972 Atari classic, remade in Love2D using Lua.
 
-<br><br>
 ## Requirements:
 ### Love2D:
 #### Arch Linux
