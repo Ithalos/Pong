@@ -6,8 +6,8 @@
 ]]
 
 -- Dependencies
-require "Paddle"
-require "Ball"
+require "Entities/Paddle"
+require "Entities/Ball"
 
 -- Game window dimensions
 WINDOW_WIDTH = 720
