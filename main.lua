@@ -95,9 +95,9 @@ function love.load()
     love.audio.setVolume(0.20)
     sounds =
     {
-        paddleHit = love.audio.newSource("sounds/PaddleHit.wav", "static"),
-        score = love.audio.newSource("sounds/Score.wav", "static"),
-        gameOver = love.audio.newSource("sounds/GameOver.wav", "static")
+        paddleHit = love.audio.newSource("Sounds/PaddleHit.wav", "static"),
+        score = love.audio.newSource("Sounds/Score.wav", "static"),
+        gameOver = love.audio.newSource("Sounds/GameOver.wav", "static")
     }
 end
 
