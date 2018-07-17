@@ -10,8 +10,8 @@ require "Entities/Paddle"
 require "Entities/Ball"
 
 -- Game window dimensions
-WINDOW_WIDTH = 720
-WINDOW_HEIGHT = 480
+WINDOW_WIDTH = 1200
+WINDOW_HEIGHT = 900
 
 --[[
     Initial program setup.
