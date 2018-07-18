@@ -12,7 +12,7 @@ Paddle =
     posY,
 
     sizeX = 20,
-    sizeY = 50,
+    sizeY = 60,
 
     speed = 200,
     aiSpeed = 85,
