@@ -14,8 +14,8 @@ Paddle =
     sizeX = 20,
     sizeY = 60,
 
-    speed = 200,
-    aiSpeed = 85,
+    speed = 250,
+    aiSpeed = 100,
 
     keyUp,
     keyDown,
