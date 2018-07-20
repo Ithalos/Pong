@@ -99,6 +99,9 @@ function love.load()
         score = love.audio.newSource("Sounds/Score.wav", "static"),
         gameOver = love.audio.newSource("Sounds/GameOver.wav", "static")
     }
+
+    -- Keep track of current keyboard layout (azerty/qwerty)
+    keyMode = "azerty"
 end
 
 --[[
