@@ -138,6 +138,17 @@ function love.keypressed(key)
         elseif key == "up" then
             gameMode = "solo"
         end
+
+        -- Toggle azerty/qwerty mode
+        if key == "lctrl" then
+            if keyMode == "azerty" then
+                keyMode = "qwerty"
+                leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "w", "s", true)
+            else
+                keyMode = "azerty"
+                leftPlayer = Paddle:Create(leftStartPos.x, leftStartPos.y, "z", "s", true)
+            end
+        end
     end
 
     if gameState == "ready" then
