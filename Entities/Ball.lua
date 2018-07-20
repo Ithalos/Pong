@@ -14,7 +14,7 @@ Ball =
     sizeX = 8,
     sizeY = 8,
 
-    launchSpeed = 250,
+    launchSpeed = 300,
 
     dirX,
     dirY
