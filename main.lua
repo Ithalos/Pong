@@ -230,6 +230,16 @@ function drawMain()
     love.graphics.setFont(smallFont)
     love.graphics.printf("Press enter to start...", 0, WINDOW_HEIGHT / 10 * 9,
                          WINDOW_WIDTH, "center")
+
+    love.graphics.printf("Left control: toggle azerty/qwerty", 50, 700, WINDOW_WIDTH, "left")
+    love.graphics.printf("Left Player Keys:", 50, 730, WINDOW_WIDTH, "left")
+    if keyMode == "azerty" then
+        love.graphics.printf("Z S", 50, 760, WINDOW_WIDTH, "left")
+    else
+        love.graphics.printf("W S", 50, 760, WINDOW_WIDTH, "left")
+    end
+    love.graphics.printf("Right Player Keys:", 50, 790, WINDOW_WIDTH, "left")
+    love.graphics.printf("Arrow Keys", 50, 820, WINDOW_WIDTH, "left")
 end
 
 --[[
