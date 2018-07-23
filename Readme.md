@@ -10,8 +10,6 @@ pacman -S love
 ```
 apt-get install love
 ```
-#### Windows
-[Love2D](https://love2d.org/)
 
 ### Running the game:
 #### Linux
